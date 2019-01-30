@@ -1,0 +1,43 @@
+"""
+Instructions
+
+Write a function select_student taking as arguments:
+
+A list where each element is a list of a student name, and his mark.
+A mark. The student mark must be superior or equal to the given mark to be accepted.
+Your function must return a dictionnary with two entries:
+
+Accepted which list the accepted students sorted by marks in the descending order.
+Refused which list the refused students sorted by marks in ascending order.
+
+Example
+
+In [1]: from solution import select_student
+
+In [2]: my_class = [['Kermit Wade', 27], ['Hattie Schleusner', 67], ['Ben Ball', 5], ['William Lee', 2]]
+
+In [3]: select_student(my_class, 20)
+
+Out[3]:
+{'Accepted': [['Hattie Schleusner', 67], ['Kermit Wade', 27]],
+ 'Refused': [['William Lee', 2], ['Ben Ball', 5]]}
+
+In [4]: select_student(my_class, 50)
+
+Out[4]:
+{'Accepted': [['Hattie Schleusner', 67]],
+ 'Refused': [['William Lee', 2], ['Ben Ball', 5], ['Kermit Wade', 27]]}
+"""
+
+#my code
+
+def select_student(students, threshold):
+    accepted_list = [[s_name,s_mark] for s_name,s_mark in students if (s_mark >= threshold)]
+    accepted_list.sort(key=lambda x:x[1],reverse=True)
+    refused_list = [[s_name, s_mark] for s_name,s_mark in students if (s_mark < threshold)]
+    refused_list.sort(key=lambda x:x[1])
+    return {"Accepted": accepted_list,"Refused": refused_list}
+
+#testing it
+students = [["Joe Dalton", 15],["Kervit Wade", 27],["Hattoe Schleusner", 67],["Benoit Ball", 5],["William Leegtan", 2]]
+print (select_student(students,27))
