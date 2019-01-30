@@ -1,4 +1,6 @@
 """
+(exercise number 30 in hackinscience.org's intro to Python class held in Paris @CRI in January 2019)
+
 Instructions
 
 Write a function select_student taking as arguments:
